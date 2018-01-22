@@ -26,7 +26,7 @@ Data were split into training and testing sets with an 80%-20% split. The primar
 ## Result
 The random forest regressor was able to predict both relative density and absolute pickup counts reasonably well for each geohashed area. The overall prediction density is visualized in Figure 2a, where it can be observed that pickup density with an airport destination tends to decrease as one moves away from Manhattan. Interestingly, the model predicts a significantly visually less dense area of pickups to the east of the Lincoln Tunnel, near Penn Station, than the actual pickup density (Figure 2b).
 
-![result1](figure/result1.PNG)
+![result1](figure\result1.PNG)
 
 This is possibly indicative of people tending to be dropped off at Penn Station for its transportation services, as opposed to traveling to an airport via taxi from Penn Station. A strong predictor was competition presence (Figure 4), which likely dips in airport-destination pickups around major areas of public transportation. Density of trips on the weekend (Figure 3a, b) is disproportionately high in Manhattan’s Financial District and Midtown regions, with similarly high density from people traveling from one airport to another. In both overall and weekend cases, the model overestimates the number of pickups, resulting in relatively darker density maps.
 
