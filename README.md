@@ -1,6 +1,6 @@
 # Predicting Pickup Density of Trips to Airports in New York City
 
-![figure1](figure/Figure1.PNG)
+![figure1](figure/Figure1.png)
 New York City is host to a vast and complicated transportation system. The approximately 54% of the city’s residents who do not own personal automobiles are reliant on public transportation. These public-transportation aficionados support New York City’s Taxi and Limousine Commission’s (TLC) nearly 15,000 yellow and green taxi cab drivers by taking approximately 200 million taxi trips annually. Yellow taxis of NYC have what is called a “yellow zone,” where they are capable of serving customers, which is primarily through the Financial District up to Midtown Manhattan. In addition, they are capable of both picking up and dropping off passengers at airports in the NYC metropolitan area.
 
 The primary research interest of this study concerns the pickup density of what are ultimately airport dropoffs in NYC and aims to address the following question: given a location in space and a time span, to what extent can the number of New York City yellow taxi trips’ ultimate destinations being one of the area’s three major airports (LaGuardia, JFK, Newark Liberty) be predicted? With this prediction, how may the NYC TLC gain insight into strategic deployment of yellow taxis throughout the city?
@@ -16,7 +16,7 @@ __Weather Data__. the National Oceanic and Atmospheric Administration (NOAA) pro
 
 A taxi zone shapefile was provided by the NYC TLC (Figure 1a). It separates the city into 263 zones, including the Newark airport zone in New Jersey. Location zones in this format were relatively large. For the purposes of this study, taxi pickup locations were geohashed (Figure 1b) with a precision of 5, meaning that each latitude and longitude coordinate in the data set were encoded in 30 bits with an error of 610.812 m [2]. In Figure 1b., there are roughly 700 geohash areas. While the taxi zone shapefile provided by the TLC have 263 polygons, the geohash gave higher resolution and more flexibility. The geohash encoding can be set into a higher resolution, but it will also make the dataset larger.
 
-![zone](figure/zone.PNG)
+![zone](figure/zone.png)
 
 ## Method
 Ensemble learning methods were employed to predict airport dropoff pickup density. A principal concern was selecting the most useful predictive features. To that end, features to initially consider include pickup location, number of passengers, fare and/or tip, proximity to building type, time of day, and day of week. Acknowledging successful pickup density prediction performed by Daulton et al [3], a random forest (RF) regressor was explored in order to decrease variance while utilizing the small bias of decision trees.
@@ -30,9 +30,9 @@ The random forest regressor was able to predict both relative density and absolu
 
 This is possibly indicative of people tending to be dropped off at Penn Station for its transportation services, as opposed to traveling to an airport via taxi from Penn Station. A strong predictor was competition presence (Figure 4), which likely dips in airport-destination pickups around major areas of public transportation. Density of trips on the weekend (Figure 3a, b) is disproportionately high in Manhattan’s Financial District and Midtown regions, with similarly high density from people traveling from one airport to another. In both overall and weekend cases, the model overestimates the number of pickups, resulting in relatively darker density maps.
 
-![result2](figure/result2.PNG)
+![result2](figure/result2.png)
 
-![feature](figure/featurerank.PNG)
+![feature](figure/featurerank.png)
 
 For the entire range of data spanning six months, the testing sample R2  calculated as a result of the random forest predictions was 0.56, indicating that the model explains approximately 56% of the variability of the data around the mean. Given the extent of the data size and relatively small number of predictive features, confidence is increased in the resulting goodness of fit. Considering several other subsets of the data set, data filtered to include only weekend pickups, including Friday, Saturday, and Sunday, resulted in an R2 of 0.53. Data filtered to include only bad weather events where precipitation was significant resulted in a calculated R2 value that was similar at 0.54. Root-mean squared error was somewhat high at 1.82, indicative of the majority of predictions (2⁄3) lying within two orders of magnitude from the actual pickup value.
 
